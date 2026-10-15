@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Geometry AI Tutor personalizes geometry problems with hints and step-by-step solutions." />
+  <title>Geometry AI Tutor</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Geometry AI Tutor home">
+      <span class="brand-mark">△</span>
+      <span><strong>Geometry AI Tutor</strong><small>Different levels. Same goal. Your progress.</small></span>
+    </a>
+    <div class="top-tag"><span class="sparkle">✦</span> AI-powered learning <span class="pill">GEOMETRY</span></div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <nav>
+        <a class="nav-item active" href="#home"><span>⌂</span> Home</a>
+        <a class="nav-item" href="#controls"><span>△</span> Geometry Topics</a>
+        <a class="nav-item" href="#progress"><span>▥</span> My Progress</a>
+        <a class="nav-item" href="#about"><span>ⓘ</span> About</a>
+      </nav>
+      <div class="side-note"><span>☼</span><strong>Better questions.<br/>Deeper understanding.</strong><p>Your personal AI math tutor.</p></div>
+    </aside>
+
+    <main id="home">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">LEARN AT YOUR OWN PACE</p>
+          <h1>Welcome to Geometry AI Tutor!</h1>
+          <p>Select a topic and difficulty level to get a personalized geometry problem, with hints and step-by-step solutions powered by AI.</p>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="compass">⌖</div><div class="ruler">▰</div>
+          <svg viewBox="0 0 150 115" role="img" aria-label="Triangle geometry illustration">
+            <circle cx="92" cy="49" r="33" fill="none" stroke="#6ca8ef" stroke-width="2.5"/>
+            <path d="M92 16 L92 82 M59 49 L125 49 M92 49 L115 26" stroke="#6ca8ef" stroke-width="2"/>
+            <path d="M18 91 L18 35 L76 91 Z" fill="#dff7ee" stroke="#219b88" stroke-width="2.5"/>
+            <path d="M18 80 L29 80 L29 91" fill="none" stroke="#219b88" stroke-width="2"/>
+          </svg>
+        </div>
+      </section>
+
+      <section class="control-panel" id="controls">
+        <div class="control-grid">
+          <div class="field">
+            <label for="topic">1. Choose a Geometry Topic</label>
+            <select id="topic">
+              <option value="Triangles and the Pythagorean theorem">Triangles &amp; Pythagorean Theorem</option>
+              <option value="Area and perimeter">Area &amp; Perimeter</option>
+              <option value="Angles and parallel lines">Angles &amp; Parallel Lines</option>
+              <option value="Similar triangles">Similar Triangles</option>
+              <option value="Circles">Circles</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>2. Choose a Difficulty Level</label>
+            <div class="levels" role="group" aria-label="Difficulty level">
+              <button class="level selected foundation" data-level="Foundation" aria-pressed="true"><span>✦</span><b>Level 1</b><small>Foundation</small></button>
+              <button class="level standard" data-level="Standard" aria-pressed="false"><span>▥</span><b>Level 2</b><small>Standard</small></button>
+              <button class="level advanced" data-level="Advanced" aria-pressed="false"><span>☆</span><b>Level 3</b><small>Advanced</small></button>
+            </div>
+          </div>
+        </div>
+        <button id="generateBtn" class="primary-btn"><span>✦</span> Generate New Problem</button>
+        <p class="status" id="status" aria-live="polite">Ready to learn. Choose a level and generate a problem.</p>
+      </section>
+
+      <div class="content-grid">
+        <section class="problem-card">
+          <div class="problem-top"><span id="levelBadge" class="level-badge foundation-badge">✦ LEVEL 1 — FOUNDATION</span><span id="modeBadge" class="mode-badge">Sample activity</span></div>
+          <h2 id="problemTitle">Your Geometry Challenge</h2>
+          <p id="problemText" class="problem-text">A right triangle has legs of 3 cm and 4 cm. Find the length of the hypotenuse.</p>
+          <div class="diagram-wrap" id="diagramWrap">
+            <svg class="triangle-diagram" viewBox="0 0 360 235" role="img" aria-label="Right triangle with legs labelled 3 cm and 4 cm">
+              <path d="M70 185 L70 40 L275 185 Z" fill="#eaf4ff" stroke="#347be8" stroke-width="3"/>
+              <path d="M70 167 L88 167 L88 185" fill="none" stroke="#347be8" stroke-width="2"/>
+              <text x="38" y="118" class="svg-label">3 cm</text>
+              <text x="155" y="210" class="svg-label">4 cm</text>
+              <text x="178" y="102" class="svg-label">c = ?</text>
+              <text x="52" y="31" class="svg-point">A</text><text x="49" y="203" class="svg-point">B</text><text x="280" y="203" class="svg-point">C</text>
+            </svg>
+          </div>
+          <div class="answer-row">
+            <label for="answerInput">Your answer</label>
+            <input id="answerInput" type="text" placeholder="Type your answer here..." />
+            <button id="checkBtn" class="check-btn">Check Answer</button>
+          </div>
+          <p id="feedback" class="feedback" aria-live="polite"></p>
+          <div class="action-row">
+            <button id="hintBtn" class="secondary-btn blue">♧ Get Hint</button>
+            <button id="solutionBtn" class="secondary-btn purple">✦ Show Solution</button>
+            <button id="resetBtn" class="secondary-btn neutral">↻ New Problem</button>
+          </div>
+        </section>
+
+        <aside class="learning-column">
+          <section class="info-card hint-card">
+            <h3><span>♧</span> Hint</h3>
+            <p id="hintText">For a right triangle, use the Pythagorean theorem: a² + b² = c². The hypotenuse is the longest side, opposite the right angle.</p>
+          </section>
+          <section class="info-card solution-card">
+            <h3><span>✦</span> Step-by-Step Solution</h3>
+            <ol id="solutionList">
+              <li>Write the formula: a² + b² = c².</li>
+              <li>Substitute the known side lengths: 3² + 4² = c².</li>
+              <li>Calculate: 9 + 16 = 25, so c = √25 = 5 cm.</li>
+            </ol>
+            <div class="answer-box"><strong>Answer</strong><p id="finalAnswer">The hypotenuse is 5 cm.</p></div>
+          </section>
+          <section class="info-card explain-card">
+            <h3><span>▤</span> Quick Explanation</h3>
+            <p id="explanationText">The Pythagorean theorem connects the two shorter sides of a right triangle to its hypotenuse. Squaring the legs and adding them gives the square of the hypotenuse.</p>
+          </section>
+        </aside>
+      </div>
+
+      <section class="progress-panel" id="progress">
+        <div><h2>My Learning Progress</h2><p>Practice, check your answers, and keep building confidence.</p></div>
+        <div class="progress-stats"><div><strong id="solvedCount">0</strong><span>Correct answers</span></div><div><strong id="attemptCount">0</strong><span>Attempts</span></div><div><strong id="accuracy">0%</strong><span>Accuracy</span></div></div>
+      </section>
+      <section class="about-panel" id="about"><strong>About this project</strong><p>Geometry AI Tutor demonstrates differentiated learning: the same geometry topic is adapted to Foundation, Standard, and Advanced learners. When an AI API is configured, the website can generate new problems and tailored guidance. A built-in sample mode is available for testing.</p></section>
+    </main>
+  </div>
+  <footer>Geometry AI Tutor <span>•</span> Learn Smarter <span>•</span> Build Your Skills</footer>
+  <script src="script.js"></script>
+</body>
+</html>
